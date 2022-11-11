@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Categories = () => (
-  <div>
-    Categories
+  <div className="categorie">
+    <button type="button">Check status</button>
   </div>
 );
 
