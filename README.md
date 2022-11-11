@@ -18,7 +18,7 @@ Built this application using React and Redux.
 
 ## Live Demo
 
-[BookStore Link](https://)
+[BookStore Link](https://bookstore-olivier.netlify.app/)
 
 ### Prerequisites
 
