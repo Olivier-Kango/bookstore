@@ -8,7 +8,6 @@ import Books from './components/Books';
 import Categories from './components/Categories';
 import './App.css';
 
-
 const App = () => (
   <div>
     <Navbar />
@@ -19,4 +18,4 @@ const App = () => (
   </div>
 );
 
-export default App
+export default App;
