@@ -1,20 +1,29 @@
-// Action types for adding and removing a book.
-const [ADDING, REMOVING] = ['ADDING', 'REMOVING']
+// Define action types for ADD_BOOK and REMOVE_BOOK a book.
+const [ADD_BOOK, REMOVE_BOOK] = ['bookStore/books/ADD_BOOK', 'bookStore/books/REMOVE_BOOK']
 
-const adding = () => {
-  return {
-    type: ADDING
+export const addBook = (playload) => ({
+  type: ADD_BOOK,
+  playload,
+});
+
+export const removeBook = (playload) => ({
+  type: REMOVE_BOOK,
+  playload,
+});
+
+const initialState = [];
+
+// Reducer
+  const bookReducer = (state = initialState, action) => {
+    switch(action.type) {
+      case ADD_BOOK:
+        return [...state, action.playload];
+
+      case REMOVE_BOOK:
+        return state.filter((book) => book.id !== action.playload);
+      default:
+        return state;
+    }
   }
-}
-
-const removing = () => {
-  return {
-    type: REMOVING
-  }
-}
-
-// Set the initial state to be an empty array of books.
-// Export Action Creators for my actions.
-// Write my reducer and export it as default.
-    // Define state changes for the actions that I created.
-    // In case of unknown action - return the current state.
+  
+  export default bookReducer;
