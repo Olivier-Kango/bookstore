@@ -1,8 +1,9 @@
 // Define action types for Checking the status.
 const CHECK_STATUS = 'bookStore/books/CHECK_STATUS';
 
-export const checkingStatus = () => ({
+export const checkingStatus = (payload) => ({
   type: CHECK_STATUS,
+  payload,
 });
 
 const initialState = [];
