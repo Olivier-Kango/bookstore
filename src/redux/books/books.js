@@ -1,5 +1,5 @@
 // Define action types for ADD_BOOK and REMOVE_BOOK a book.
-const [ADD_BOOK, REMOVE_BOOK] = ['bookStore/books/ADD_BOOK', 'bookStore/books/REMOVE_BOOK'];
+const [ADD_BOOK, REMOVE_BOOK] = ['ADD_BOOK', 'REMOVE_BOOK'];
 
 export const addBook = (payload) => ({
   type: ADD_BOOK,
@@ -31,7 +31,10 @@ const bookReducer = (state = initialState, action) => {
       return [...state, action.payload];
 
     case REMOVE_BOOK:
-      return state.filter((book) => book.id !== action.payload);
+      return [
+        ...state.slice(0, action.payload.id),
+        ...state.slice(action.payload.id + 1),
+      ];
     default:
       return state;
   }
