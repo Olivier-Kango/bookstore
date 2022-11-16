@@ -9,7 +9,12 @@ const Books = () => {
     <div className="container">
       <div className="books">
         {books.map((book, id) => (
-          <Book categorie={`${book.categorie}`} title={`${book.title}`} author={`${book.author}`} id={id} key={`${book.title}`} />
+          <Book
+            title={`${book.title}`}
+            author={`${book.author}`}
+            id={id}
+            key={`${book.title}`}
+          />
         ))}
       </div>
       <Form />
