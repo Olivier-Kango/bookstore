@@ -2,18 +2,7 @@ import React from 'react';
 import Book from './Book';
 import Form from './Form';
 
-const books = [
-  {
-    categorie: 'Action',
-    title: 'The Hunger Games',
-    author: 'Suzannw Collins',
-  },
-  {
-    categorie: 'Science Fiction',
-    title: 'Dune',
-    author: 'Frank Herbert',
-  },
-];
+const books = [];
 
 const Books = () => (
   <div className="container">
