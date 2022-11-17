@@ -17,8 +17,6 @@ const Form = () => {
     dispatch(addBook(newBook));
     document.querySelector('#book-input').value = '';
     document.querySelector('#author-input').value = '';
-    setTitle('');
-    setAuthor('');
   };
   return (
     <div className="div-form">
