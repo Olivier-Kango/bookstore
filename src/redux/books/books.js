@@ -1,43 +1,45 @@
-// Define action types for ADD_BOOK and REMOVE_BOOK a book.
-const [ADD_BOOK, REMOVE_BOOK] = ['ADD_BOOK', 'REMOVE_BOOK'];
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import BooksApi from '../../api/BooksApi';
 
-export const addBook = (payload) => ({
-  type: ADD_BOOK,
-  payload,
-});
+const [ADD_BOOK, REMOVE_BOOK, LOAD_BOOKS] = ['ADD_BOOK', 'REMOVE_BOOK', 'LOAD_BOOKS'];
 
-export const removeBook = (payload) => ({
-  type: REMOVE_BOOK,
-  payload,
-});
-
-const initialState = [
-  {
-    categorie: 'Action',
-    title: 'The Hunger Games',
-    author: 'Suzannw Collins',
-  },
-  {
-    categorie: 'Science Fiction',
-    title: 'Dune',
-    author: 'Frank Herbert',
-  },
-];
-
-// Reducer
-const bookReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_BOOK:
-      return [...state, action.payload];
-
-    case REMOVE_BOOK:
-      return [
-        ...state.slice(0, action.payload.id),
-        ...state.slice(action.payload.id + 1),
-      ];
-    default:
-      return state;
+// LOAD
+export const loadBooks = createAsyncThunk(LOAD_BOOKS, async () => {
+  try {
+    const response = await BooksApi.getBooksApi();
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
   }
-};
+});
 
-export default bookReducer;
+// ADD
+export const addBook = createAsyncThunk(ADD_BOOK, async (nul, payload) => {
+  try {
+    await BooksApi.postBookApi(nul, payload);
+    payload.dispatch(loadBooks());
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+// DELETE
+export const removeBook = createAsyncThunk(REMOVE_BOOK, async (id, thunkAPI) => {
+  try {
+    await BooksApi.deleteBookApi(id);
+    thunkAPI.dispatch(loadBooks());
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+// BOOK STORE
+const BooksSlice = createSlice({
+  name: 'bookstore',
+  initialState: {},
+  extraReducers: (builder) => {
+    builder.addCase(loadBooks.fulfilled, (state, action) => action.payload);
+  },
+});
+
+export default BooksSlice;

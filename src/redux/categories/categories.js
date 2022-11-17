@@ -1,18 +1,16 @@
 // Define action types for Checking the status.
-const CHECK_STATUS = 'bookStore/books/CHECK_STATUS';
+const CHECK_STATUS = 'CHECK_STATUS';
 
 export const checkingStatus = (payload) => ({
   type: CHECK_STATUS,
   payload,
 });
 
-const initialState = [];
-
 // Reducer
-const reducerCategories = (state = initialState, action) => {
+const reducerCategories = (state = '', action) => {
   switch (action.type) {
     case CHECK_STATUS:
-      return 'Under construction';
+      return action.payload;
     default:
       return state;
   }

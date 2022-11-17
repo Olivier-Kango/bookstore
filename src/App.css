@@ -44,7 +44,35 @@ nav {
   margin-top: 15px;
 }
 
+/* FORM */
 .form {
   display: flex;
   justify-content: space-between;
+}
+
+.change {
+  background: rgba(250, 189, 189, 0.833);
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 20px;
+    margin: 0 25px;
+    gap: 50px;
+  }
+
+  .form {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  header {
+    flex-direction: column;
+  }
+
+  .categorie {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 }
