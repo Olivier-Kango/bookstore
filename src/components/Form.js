@@ -14,13 +14,27 @@ const Form = () => {
       title,
       author,
     };
-    dispatch(addBook(newBook));
-    document.querySelector('#book-input').value = '';
-    document.querySelector('#author-input').value = '';
+
+    if (document.querySelector('#book-input').value === ''
+      && document.querySelector('#author-input').value !== '') {
+      document.querySelector('.alert').innerText = 'Please Add a Book';
+    } else if (document.querySelector('#book-input').value !== ''
+      && document.querySelector('#author-input').value === '') {
+      document.querySelector('.alert').innerText = 'Please Add an Author';
+    } else if (document.querySelector('#book-input').value === ''
+    || document.querySelector('#author-input').value === '') {
+      document.querySelector('.alert').innerText = 'Please Add a new Book and Author';
+    } else {
+      dispatch(addBook(newBook));
+      document.querySelector('.form').reset();
+      document.querySelector('.alert').innerText = '';
+    }
   };
+
   return (
     <div className="div-form">
       <h4>ADD NEW BOOK</h4>
+      <p className="alert">{}</p>
       <form className="form">
         <input
           type="text"
