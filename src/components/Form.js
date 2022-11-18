@@ -4,7 +4,6 @@ import Select from 'react-select';
 import { addBook } from '../redux/books/books';
 import options from './options';
 
-let index = 0;
 const Form = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -25,7 +24,7 @@ const Form = () => {
   const submition = (e, title, author) => {
     e.preventDefault();
     const newBook = {
-      id: index += 1,
+      item_id: Math.random(),
       title,
       author,
       category: categoryInputs(),
