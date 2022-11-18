@@ -20,7 +20,7 @@ const Book = (book) => {
         </button>
         <button
           type="button"
-          onClick={() => dispatch(removeBook({ id }))}
+          onClick={() => dispatch(removeBook(id))}
         >
           Remove
         </button>
