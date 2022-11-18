@@ -10,6 +10,7 @@ const Books = () => {
       <div className="books">
         {books.map((book, id) => (
           <Book
+            category={`${book.category}`}
             title={`${book.title}`}
             author={`${book.author}`}
             id={id}
