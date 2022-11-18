@@ -1,0 +1,88 @@
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0;
+}
+
+.change {
+  background: rgba(250, 189, 189, 0.833);
+}
+
+.div-form {
+  border-top: 3px solid #9a9a9a1e;
+}
+
+.div-form h4 {
+  color: #818181;
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+input {
+  border: none;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+input:focus {
+  outline: none;
+}
+
+#book-input {
+  width: 30%;
+  border: 2px solid rgb(236, 236, 236);
+  border-radius: 5px;
+}
+
+#author-input {
+  width: 25%;
+  border: 2px solid rgb(236, 236, 236);
+  border-radius: 5px;
+}
+
+#category-input {
+  width: 20%;
+}
+
+form button {
+  width: 13%;
+  border: none;
+  background: #0290ff;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+form button:hover {
+  cursor: pointer;
+  background: #0076d1;
+}
+
+.alert {
+  color: red;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .form {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #book-input,
+  #author-input {
+    width: 85%;
+  }
+
+  #category-input {
+    width: 98%;
+  }
+
+  form button {
+    width: 98%;
+    padding: 17px;
+    cursor: pointer;
+  }
+}
