@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import Select from 'react-select';
 import { addBook } from '../redux/books/books';
 import options from './options';
+import '../styles/form.css';
 
 const Form = () => {
   const [title, setTitle] = useState('');
