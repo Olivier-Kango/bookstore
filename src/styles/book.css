@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;900&display=swap');
+
+.book h4,
+.book p {
+  margin: 0;
+}
+
+.book p:nth-child(1) {
+  color: #727272;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.book h4 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: bolder;
+  margin: 6px 0 2px 0;
+  font-size: 20px;
+}
+
+.book p:nth-child(3) {
+  color: #0290ff;
+  font-family: 'Roboto', serif;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.book {
+  position: relative;
+  padding: 20px;
+  background: white;
+  border: 2px solid #9a9a9a42;
+  border-radius: 5px;
+}
+
+.categorie {
+  padding: 20px;
+  margin: 0 80px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  width: fit-content;
+}
+
+.buttons button {
+  border: none;
+  background: none;
+  color: #0290ff;
+  font-family: 'Roboto', serif;
+  font-size: 16px;
+  padding: 0;
+}
+
+.buttons button:nth-child(2) {
+  border-left: 1px solid #9a9a9a42;
+  border-right: 1px solid #9a9a9a42;
+  text-align: center;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.completed {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .categorie {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .completed {
+    display: none;
+  }
+
+  .buttons {
+    margin-top: 20px;
+  }
+
+  .book h4 {
+    margin: 10px 0;
+  }
+}
