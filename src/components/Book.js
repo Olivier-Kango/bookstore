@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/books';
+import '../styles/book.css';
+import completed from '../images/bookstore - Copy.png';
 
 const Book = (book) => {
   const {
@@ -28,6 +30,7 @@ const Book = (book) => {
           Edit
         </button>
       </div>
+      <img src={completed} alt="completed" className="completed" />
     </div>
   );
 };
