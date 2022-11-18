@@ -6,7 +6,7 @@ import BooksSlice from './books/books';
 const rootReducer = {
   reducer: {
     books: BooksSlice.reducer,
-    categories: reducerCategories,
+    reducerCategories,
   },
 };
 
