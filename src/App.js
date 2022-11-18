@@ -7,7 +7,9 @@ import Header from './components/Header';
 import Books from './components/Books';
 import Categories from './components/Categories';
 import './App.css';
+import getBooksFromApi from './api/api';
 
+getBooksFromApi();
 const App = () => (
   <div>
     <Header />
