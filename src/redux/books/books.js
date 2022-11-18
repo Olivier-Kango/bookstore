@@ -13,12 +13,12 @@ export const removeBook = (payload) => ({
 
 const initialState = [
   {
-    categorie: 'Action',
+    category: 'Action',
     title: 'The Hunger Games',
     author: 'Suzannw Collins',
   },
   {
-    categorie: 'Science Fiction',
+    category: 'Science Fiction',
     title: 'Dune',
     author: 'Frank Herbert',
   },
