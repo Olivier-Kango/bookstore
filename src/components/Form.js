@@ -1,33 +1,84 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Select from 'react-select';
 import { addBook } from '../redux/books/books';
+import options from './options';
 
-let index = 1;
+let index = 0;
 const Form = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('');
   const dispatch = useDispatch();
+
+  const categoryInputs = () => {
+    const newCategoryArray = [];
+
+    if (category.length > 0) {
+      category.forEach((item) => newCategoryArray.push(item.value));
+      return newCategoryArray.join(', ');
+    }
+
+    return 'Not Specified';
+  };
+
   const submition = (e, title, author) => {
     e.preventDefault();
     const newBook = {
       id: index += 1,
       title,
       author,
+      category: categoryInputs(),
     };
+    const [bookInput, authorInput, categoryInput, alert] = [
+      document.querySelector('#book-input'),
+      document.querySelector('#author-input'),
+      document.querySelector('.css-14el2xx-placeholder'),
+      document.querySelector('.alert'),
+    ];
 
-    if (document.querySelector('#book-input').value === ''
-      && document.querySelector('#author-input').value !== '') {
-      document.querySelector('.alert').innerText = 'Please Add a Book';
-    } else if (document.querySelector('#book-input').value !== ''
-      && document.querySelector('#author-input').value === '') {
-      document.querySelector('.alert').innerText = 'Please Add an Author';
-    } else if (document.querySelector('#book-input').value === ''
-    || document.querySelector('#author-input').value === '') {
-      document.querySelector('.alert').innerText = 'Please Add a new Book and Author';
+    if (bookInput.value === '' && authorInput.value !== '' && category.length > 0) {
+      alert.innerText = 'Please Add a Book title';
+      bookInput.classList.add('change');
+      authorInput.classList.remove('change');
+      categoryInput.classList.remove('change');
+    } else if (bookInput.value !== '' && authorInput.value === '' && category.length > 0) {
+      alert.innerText = 'Please Add an Author';
+      bookInput.classList.remove('change');
+      authorInput.classList.add('change');
+      categoryInput.classList.remove('change');
+    } else if (bookInput.value !== '' && authorInput.value !== '' && category.length === 0) {
+      alert.innerText = 'Please Select a Category';
+      bookInput.classList.remove('change');
+      authorInput.classList.remove('change');
+      categoryInput.classList.add('change');
+    } else if (bookInput.value === '' && authorInput.value === '' && category.length > 0) {
+      alert.innerText = 'Please Add a Book title and Author';
+      bookInput.classList.add('change');
+      authorInput.classList.add('change');
+      categoryInput.classList.remove('change');
+    } else if (bookInput.value === '' && authorInput.value !== '' && category.length === 0) {
+      alert.innerText = 'Please Add a Book title and Select a category';
+      bookInput.classList.add('change');
+      authorInput.classList.remove('change');
+      categoryInput.classList.add('change');
+    } else if (bookInput.value !== '' && authorInput.value === '' && category.length === 0) {
+      alert.innerText = 'Please Add an Author and Select a category';
+      bookInput.classList.remove('change');
+      authorInput.classList.add('change');
+      categoryInput.classList.add('change');
+    } else if (bookInput.value === '' || authorInput.value === '' || category.length === 0) {
+      alert.innerText = 'Please Add a Book title, Author and Select a category';
+      bookInput.classList.add('change');
+      authorInput.classList.add('change');
+      categoryInput.classList.add('change');
     } else {
       dispatch(addBook(newBook));
       document.querySelector('.form').reset();
       document.querySelector('.alert').innerText = '';
+      bookInput.classList.remove('change');
+      authorInput.classList.remove('change');
+      categoryInput.classList.remove('change');
     }
   };
 
@@ -50,6 +101,19 @@ const Form = () => {
           onChange={(e) => setAuthor(e.target.value)}
           required
         />
+
+        <Select
+          options={options()}
+          id="category-input"
+          placeholder="Select category"
+          onChange={setCategory}
+          className="multi-select"
+          Searchable
+          Clearable
+          isMulti
+          required
+        />
+
         <button
           type="button"
           onClick={(e) => submition(e, title, author)}
