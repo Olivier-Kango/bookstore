@@ -44,7 +44,12 @@ nav {
   margin-top: 15px;
 }
 
+/* FORM */
 .form {
   display: flex;
   justify-content: space-between;
+}
+
+.change {
+  background: rgba(250, 189, 189, 0.833);
 }
